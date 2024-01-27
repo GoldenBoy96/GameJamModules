@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - MemeSample
+  - HappyCat
+  - ChipiChapa
+  - SmurfCat
+  - Shield
+  - GiftCat
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 923321995
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2654721989
+    locked: 0
+  - name: DeadScreen1
+    uniqueID: 2282235401
+    locked: 0
+  - name: DeadScreen2
+    uniqueID: 3260829385
+    locked: 0
+  - name: Heart
+    uniqueID: 3346871843
+    locked: 0
+  - name: HeartEmpty
+    uniqueID: 1554285103
+    locked: 0
