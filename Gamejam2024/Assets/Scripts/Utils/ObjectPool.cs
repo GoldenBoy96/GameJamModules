@@ -62,8 +62,16 @@ public class ObjectPool : MonoBehaviour
     {
         if (_pool.Count > 0)
         {
-            _pool.Peek().SetActive(true);
-            return _pool.Pop();
+            try
+            {
+                _pool.Peek().SetActive(true);
+                return _pool.Pop();
+            }
+            catch {
+                _pool.Peek().SetActive(true);
+                return _pool.Pop();
+            }
+            
         }
         else
         {

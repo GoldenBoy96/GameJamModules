@@ -14,7 +14,7 @@ public class CameraShake : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     public static CameraShake Instance { get; private set; }
 

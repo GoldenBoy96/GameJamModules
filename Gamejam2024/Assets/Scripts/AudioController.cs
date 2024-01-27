@@ -18,7 +18,7 @@ public class AudioController : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         audioSource = GetComponent<AudioSource>();
     }
     public static AudioController Instance { get; private set; }
@@ -58,8 +58,14 @@ public class AudioController : MonoBehaviour
 
     public void ChangeToAudio(int index)
     {
-        audioSource.Stop();
+        //audioSource.Stop();
+        //audioSource.clip = audioClips[index];
+        //audioSource.Play();
+
+        audioSource.DOFade(5f, 5f);
         audioSource.clip = audioClips[index];
+        audioSource.time = Random.Range(0, 80) / 100 * audioSource.clip.length;
         audioSource.Play();
+
     }
 }

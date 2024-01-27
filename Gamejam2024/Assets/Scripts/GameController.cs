@@ -7,6 +7,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameController : MonoBehaviour
 {
+    
 
     public Transform enermyParent;
     public List<GameObject> enermyPrefabs;
@@ -20,7 +21,10 @@ public class GameController : MonoBehaviour
     public readonly string HappyCat = "HappyCat";
     public readonly string ChipiChapa = "ChipiChapa";
     public readonly string SmurfCat = "SmurfCat";
+    public readonly string Maxwell = "Maxwell";
 
+    [Range(1, 4)]
+    public int Difficult = 1;
 
     private static GameController instance;
     private float nextSongDuration;
@@ -40,10 +44,10 @@ public class GameController : MonoBehaviour
             pool.CreatePool(enermy, 200, enermyParent);
             enermyPools.Add(pool);
             enermyPrefabTag.Add(enermy.gameObject.tag);
-            Debug.Log(enermy.gameObject.tag);
+            //Debug.Log(enermy.gameObject.tag);
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
 
     }
@@ -68,31 +72,36 @@ public class GameController : MonoBehaviour
     {
         if (isPlaying)
         {
-             state = Random.Range(0, enermyPrefabs.Count - 1);
+            state = Random.Range(0, Difficult);
             while (state == enermyPrefabTag.IndexOf(memeState))
             {
-                state = Random.Range(0, enermyPrefabs.Count);
+                state = Random.Range(0, Difficult);
             }
             //Debug.Log("ChangeState " + state + " | " + enermyPrefabTag.IndexOf(memeState));
             switch (state)
             {
                 case 0:
                     AudioController.Instance.ChangeToAudio(0);
-                    if (!isFirstTime) yield return new WaitForSeconds(1f);
+                    if (!isFirstTime) yield return new WaitForSeconds(0.5f);
                     memeState = HappyCat;
                     break;
                 case 1:
                     AudioController.Instance.ChangeToAudio(1);
-                    if (!isFirstTime) yield return new WaitForSeconds(1f);
+                    if (!isFirstTime) yield return new WaitForSeconds(0.5f);
                     memeState = ChipiChapa;
                     break;
                 case 2:
                     AudioController.Instance.ChangeToAudio(2);
-                    if (!isFirstTime) yield return new WaitForSeconds(1f);
+                    if (!isFirstTime) yield return new WaitForSeconds(0.5f);
                     memeState = SmurfCat;
                     break;
+                case 3:
+                    AudioController.Instance.ChangeToAudio(3);
+                    if (!isFirstTime) yield return new WaitForSeconds(0.5f);
+                    memeState = Maxwell;
+                    break;
             }
-            nextSongDuration = Random.Range(5f, 6f);
+            nextSongDuration = Random.Range(5f, 10f);
             yield return new WaitForSeconds(nextSongDuration);
             StartCoroutine(ChangeState(false));
         }

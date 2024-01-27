@@ -665,6 +665,7 @@ MonoBehaviour:
   - {fileID: 949432277160798676, guid: 89f30f32ac311454dad34ea06fbee2b9, type: 3}
   - {fileID: 6784791578905943419, guid: a4ddd2e7ff422b24c992ccdd81dfa31f, type: 3}
   - {fileID: 2787961276168772414, guid: 2a2797e991f30a34ea6d5fe2cdfb41e8, type: 3}
+  - {fileID: 3012558170930458024, guid: 0bee5f2364a797844906de92aee23c83, type: 3}
   enermyPools: []
   giftCatPrefab: {fileID: 7006785992554399421, guid: acbd995f5ecb10741bd3057bd769fa76, type: 3}
   score: 0
@@ -703,6 +704,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e60490649df7e9b4790fc39f6fec6c8d, type: 3}
   - {fileID: 8300000, guid: 1acb081696ab74848bf21a16853bda89, type: 3}
   - {fileID: 8300000, guid: a9133adac815538478dc65d3a9ba475f, type: 3}
+  - {fileID: 8300000, guid: 39ecffe0b73b67447b3f0938fdba5196, type: 3}
 --- !u!82 &552042034
 AudioSource:
   m_ObjectHideFlags: 0

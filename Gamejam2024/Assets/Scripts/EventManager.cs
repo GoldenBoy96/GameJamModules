@@ -21,7 +21,7 @@ public class EventManager : MonoBehaviour
         {
             Instance = GetComponent<EventManager>();
         };
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     public static EventManager Instance { get; private set; }
 

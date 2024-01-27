@@ -24,7 +24,7 @@ public class HappyCatMovement : MonoBehaviour
     void Start()
     {
 
-        StartCoroutine(Jump());
+        //StartCoroutine(Jump());
     }
 
     // Update is called once per frame
@@ -33,11 +33,11 @@ public class HappyCatMovement : MonoBehaviour
         transform.Translate(dir * speed * Time.deltaTime);
     }
 
-    IEnumerator Jump()
-    {
-        transform.Translate(dir *50 * speed * Time.deltaTime);
-        yield return new WaitForSeconds(1f);
-        transform.Translate(-dir * 20 * speed * Time.deltaTime);
-        StartCoroutine(Jump());
-    }
+    //IEnumerator Jump()
+    //{
+    //    //transform.Translate(dir *50 * speed * Time.deltaTime);
+    //    //yield return new WaitForSeconds(1f);
+    //    //transform.Translate(-dir * 20 * speed * Time.deltaTime);
+    //    //StartCoroutine(Jump());
+    //}
 }

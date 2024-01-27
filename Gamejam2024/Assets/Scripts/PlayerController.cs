@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -57,6 +58,9 @@ public class PlayerController : MonoBehaviour
                 case "SmurfCat":
                     GameController.Instance.PushToPool(2, collision.gameObject);
                     break;
+                case "Maxwell":
+                    GameController.Instance.PushToPool(3, collision.gameObject);
+                    break;
             }
             GameController.Instance.Score++;
             EventManager.Instance.InvokeGainScore();
@@ -101,5 +105,5 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log("Test event from Player");
     }
-
+    
 }

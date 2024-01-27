@@ -13,7 +13,7 @@ public class SpawnerController : MonoBehaviour
     {
         
         //InvokeRepeating("Test", 2f, 2f);
-        StartCoroutine(SpawnMeme(GameController.Instance.enermyPrefabs[Random.Range(0, GameController.Instance.enermyPrefabs.Count)], minRad, maxRad, Random.Range(2f, 7f)));
+        StartCoroutine(SpawnMeme(GameController.Instance.enermyPrefabs[Random.Range(0, GameController.Instance.Difficult)], minRad, maxRad, Random.Range(2f, 7f)));
     }
 
     // Update is called once per frame
@@ -40,12 +40,12 @@ public class SpawnerController : MonoBehaviour
         newEnermy.transform.Rotate(0, 0, Random.Range(minRad, maxRad) , Space.Self);
         StartCoroutine(PushBackToPool(enermyPrefab, newEnermy));
         yield return new WaitForSeconds(delay);
-        StartCoroutine(SpawnMeme(GameController.Instance.enermyPrefabs[Random.Range(0, GameController.Instance.enermyPrefabs.Count)], minRad, maxRad, Random.Range(2f, 7f)));
+        StartCoroutine(SpawnMeme(GameController.Instance.enermyPrefabs[Random.Range(0, GameController.Instance.Difficult)], minRad, maxRad, Random.Range(2f, 7f)));
     }
 
     public IEnumerator PushBackToPool(GameObject enermyPrefab, GameObject enermy)
     {
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(30f);
         GameController.Instance.enermyPools[GameController.Instance.enermyPrefabs.IndexOf(enermyPrefab)].Push(enermy);
     }
 }
