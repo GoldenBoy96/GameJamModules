@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MaxwellMovement : MonoBehaviour
 {
-    private float speed = 10.0f;
+    private float speed = 6.0f;
     private Vector3 dir = new Vector3(0.3f, 1f, 0f);
     // Start is called before the first frame update
     private void OnEnable()

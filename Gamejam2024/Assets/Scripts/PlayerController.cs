@@ -13,9 +13,12 @@ public class PlayerController : MonoBehaviour
 
     public int hearts = 3;
 
+    public List<Sprite> sprites = new List<Sprite>();
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        RandomSkin();
     }
 
     // Update is called once per frame
@@ -32,9 +35,14 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(position);
     }
 
-    bool isInvincible = false;
+    public bool isInvincible = false;
 
-    IEnumerator SetInvincible()
+    private void RandomSkin()
+    {
+        int skinIndex = Random.Range(0, sprites.Count);
+        gameObject.GetComponent<SpriteRenderer>().sprite = sprites[skinIndex];
+    }
+    public IEnumerator SetInvincible()
     {
         isInvincible = true;
         yield return new WaitForSeconds(1f);
@@ -44,25 +52,33 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.tag + " | " + GameController.Instance.memeState);
+        
         if (collision.gameObject.CompareTag(GameController.Instance.memeState))
         {
             switch (GameController.Instance.memeState)
             {
                 case "HappyCat":
                     GameController.Instance.PushToPool(0, collision.gameObject);
+                    AudioController.Instance.PlayCollectionSound();
                     break;
                 case "ChipiChapa":
                     GameController.Instance.PushToPool(1, collision.gameObject);
+                    AudioController.Instance.PlayCollectionSound();
                     break;
                 case "SmurfCat":
                     GameController.Instance.PushToPool(2, collision.gameObject);
+                    AudioController.Instance.PlayCollectionSound();
                     break;
                 case "Maxwell":
                     GameController.Instance.PushToPool(3, collision.gameObject);
+                    AudioController.Instance.PlayCollectionSound();
                     break;
             }
             GameController.Instance.Score++;
+            if (GameController.Instance.Score > GameManager.Instance.HighestScore)
+            {
+                GameManager.Instance.HighestScore = GameController.Instance.Score;
+            }
             EventManager.Instance.InvokeGainScore();
             //Debug.Log("Score: " + GameController.Instance.Score);
         }
@@ -78,9 +94,11 @@ public class PlayerController : MonoBehaviour
                 if (hearts > 1)
                 {
                     hearts--;
+                    AudioController.Instance.PlayHurtSound();
                     CameraShake.Shake(2f, 2f);
                     EventManager.Instance.InvokeLostHeart();
                     StartCoroutine(SetInvincible());
+                    RandomSkin();
                     return;
                 }
                 else

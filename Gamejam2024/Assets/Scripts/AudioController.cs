@@ -7,7 +7,11 @@ public class AudioController : MonoBehaviour
 {
     public AudioSource audioSource;
     public List<AudioClip> audioClips = new();
-
+    public AudioClip collectingSound;
+    public AudioClip hurtSound;
+    public AudioClip shieldBreakSound;
+    public AudioClip explosionSound;
+    public AudioClip healingSound;
 
     private static AudioController instance;
     private AudioController()
@@ -25,7 +29,7 @@ public class AudioController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
         //audioSource.clip = audioClips[0];
         //audioSource.PlayOneShot(RandomClip());
         audioSource.clip = audioClips[GameController.Instance.state];
@@ -36,7 +40,7 @@ public class AudioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
     //public void ChangeToAudio()
@@ -68,4 +72,29 @@ public class AudioController : MonoBehaviour
         audioSource.Play();
 
     }
+
+    public void PlayCollectionSound()
+    {
+        //audioSource.pitch = Random.Range(0.5f, 1.5f);
+        audioSource.PlayOneShot(collectingSound);
+        //audioSource.pitch = 1;
+    }
+    public void PlayHurtSound()
+    {
+        audioSource.PlayOneShot(hurtSound);
+    }
+    public void PlayShieldBreakSound()
+    {
+        audioSource.PlayOneShot(shieldBreakSound);
+    }
+    public void PlayExplosionSound()
+    {
+        audioSource.PlayOneShot(explosionSound);
+    }
+    public void PlayHealingSound()
+    {
+        audioSource.PlayOneShot(healingSound);
+    }
+
+
 }

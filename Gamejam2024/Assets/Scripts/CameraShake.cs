@@ -22,6 +22,7 @@ public class CameraShake : MonoBehaviour
     {
         transform.DOShakePosition(duration, strenght);
         transform.DOShakePosition(duration, strenght);
+        //transform.position = Vector3.zero;
     }
 
     public static void Shake(float duration, float strenght) => Instance.OnShake(duration, strenght);

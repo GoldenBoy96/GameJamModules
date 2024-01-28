@@ -19,6 +19,11 @@ public class DeadScreen : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("DemoLevel");
+        SceneManager.LoadScene("SurvivalModel");
+    }
+
+    public static void ToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -8,6 +8,7 @@ public class GiftCatMovement : MonoBehaviour
     private Vector3 dir = Vector3.down;
 
     public GameObject Shield;
+    public GameObject Explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,29 @@ public class GiftCatMovement : MonoBehaviour
 
     public void SummonBuff(GameObject player)
     {
-        GameObject shield = Instantiate(Shield);
-        shield.GetComponent<ShieldSkill>().player = player;
-        Destroy(gameObject);
+        int skill = Random.Range(0, 3);
+        switch (skill)
+        {
+            case 0:
+                GameObject shield = Instantiate(Shield);
+                shield.GetComponent<ShieldSkill>().player = player;
+                Destroy(gameObject);
+                break;
+            case 1:
+                GameObject explosion = Instantiate(Explosion);
+                explosion.GetComponent<ExplosionSkill>().player = player;
+                Destroy(gameObject);
+                break;
+                case 2:
+                if (player.GetComponent<PlayerController>().hearts < 3)
+                {
+                    player.GetComponent<PlayerController>().hearts++;
+                }
+                AudioController.Instance.PlayHealingSound();
+                EventManager.Instance.InvokeLostHeart();
+                Destroy(gameObject);
+                break;
+        }
+
     }
 }

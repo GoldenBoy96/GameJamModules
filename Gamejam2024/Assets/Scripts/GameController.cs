@@ -23,8 +23,8 @@ public class GameController : MonoBehaviour
     public readonly string SmurfCat = "SmurfCat";
     public readonly string Maxwell = "Maxwell";
 
-    [Range(1, 4)]
-    public int Difficult = 1;
+    //[Range(1, 4)]
+    //public int Difficult = 4;
 
     private static GameController instance;
     private float nextSongDuration;
@@ -58,6 +58,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         StartCoroutine(ChangeState(true));
+        //Time.timeScale = 0.8f;
     }
     public void PushToPool(int poolIndex, GameObject gameObject)
     {
@@ -72,10 +73,10 @@ public class GameController : MonoBehaviour
     {
         if (isPlaying)
         {
-            state = Random.Range(0, Difficult);
+            state = Random.Range(0, enermyPrefabTag.Count);
             while (state == enermyPrefabTag.IndexOf(memeState))
             {
-                state = Random.Range(0, Difficult);
+                state = Random.Range(0, enermyPrefabTag.Count);
             }
             //Debug.Log("ChangeState " + state + " | " + enermyPrefabTag.IndexOf(memeState));
             switch (state)

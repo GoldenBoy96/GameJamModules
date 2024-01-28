@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     List<Transform> heartFullList = new List<Transform>();
     public GameObject Score;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highestScoreText;
+    public GameObject DeadScreen;
 
 
     private void Start()
@@ -22,19 +24,28 @@ public class UIManager : MonoBehaviour
         {
             GameObject heart = Instantiate(Heart, HealthBar.transform);
             heartFullList.Add(heart.transform.Find("HeartFull"));
-            
+
         }
+
         //scoreText = Score.GetComponent<TextMeshProUGUI>();
-        
+        //highestScoreText.text = "Highest Score: " + GameManager.Instance.HighestScore;
     }
 
     private void Update()
     {
-        
+
     }
 
     public void LostHeart()
     {
+        if (playerController.hearts == 0)
+        {
+            DeadScreen.SetActive(true);
+        }
+        foreach(Transform heart in heartFullList)
+        {
+            heart.gameObject.SetActive(true);
+        }
         for (int i = heartFullList.Count - 1; i >= playerController.hearts; i--)
         {
             heartFullList[i].gameObject.SetActive(false);
