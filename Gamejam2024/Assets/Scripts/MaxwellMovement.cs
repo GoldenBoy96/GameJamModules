@@ -12,11 +12,11 @@ public class MaxwellMovement : MonoBehaviour
         int nature = Random.Range(0, 2);
         if (nature == 0)
         {
-            dir = new Vector3(2f, 1f, 0f);
+            dir = new Vector3(1.5f, 1f, 0f);
         }
         else
         {
-            dir = new Vector3(-2f, 1f, 0f);
+            dir = new Vector3(-1.5f, 1f, 0f);
         }
         StartCoroutine(ResetNature());
     }

@@ -35,7 +35,7 @@ public class ExplosionSkill : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.tag + " | ");
+        //Debug.Log(collision.gameObject.tag + " | ");
         if (collision.gameObject.CompareTag("Player"))
         {
             player = collision.gameObject;

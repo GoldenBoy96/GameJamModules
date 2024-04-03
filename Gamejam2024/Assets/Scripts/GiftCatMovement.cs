@@ -24,7 +24,8 @@ public class GiftCatMovement : MonoBehaviour
 
     public void SummonBuff(GameObject player)
     {
-        int skill = Random.Range(0, 3);
+        
+        int skill = Random.Range(0, 3); Debug.Log(skill);
         switch (skill)
         {
             case 0:
@@ -37,7 +38,7 @@ public class GiftCatMovement : MonoBehaviour
                 explosion.GetComponent<ExplosionSkill>().player = player;
                 Destroy(gameObject);
                 break;
-                case 2:
+            case 2:
                 if (player.GetComponent<PlayerController>().hearts < 3)
                 {
                     player.GetComponent<PlayerController>().hearts++;
@@ -48,5 +49,13 @@ public class GiftCatMovement : MonoBehaviour
                 break;
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("CatKiller"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

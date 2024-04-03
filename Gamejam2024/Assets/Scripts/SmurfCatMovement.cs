@@ -11,15 +11,16 @@ public class SmurfCatMovement : MonoBehaviour
     private void OnEnable()
     {
         int nature = Random.Range(0, 2);
+        float natureRot = Random.Range(2f, 4f);
         if (nature == 0)
         {
             dir = new Vector3(0.3f, 1f, 0f);
-            rot = new Vector3(0f, 0f, 4f);
+            rot = new Vector3(0f, 0f, natureRot);
         }
         else
         {
             dir = new Vector3(-0.3f, 1f, 0f);
-            rot = new Vector3(0f, 0f, -4f);
+            rot = new Vector3(0f, 0f, -natureRot);
         }
     }
 

@@ -28,7 +28,8 @@ public class UIManager : MonoBehaviour
         }
 
         //scoreText = Score.GetComponent<TextMeshProUGUI>();
-        //highestScoreText.text = "Highest Score: " + GameManager.Instance.HighestScore;
+
+        highestScoreText.text = "Highest Score: " + GameManagerr.Instance.HighestScore;
     }
 
     private void Update()
@@ -38,8 +39,9 @@ public class UIManager : MonoBehaviour
 
     public void LostHeart()
     {
-        if (playerController.hearts == 0)
+        if (playerController.hearts <= 0)
         {
+            playerController.hearts = 0;
             DeadScreen.SetActive(true);
         }
         foreach(Transform heart in heartFullList)
@@ -54,6 +56,7 @@ public class UIManager : MonoBehaviour
 
     public void GainScore()
     {
+        highestScoreText.text = "Highest Score: " + GameManagerr.Instance.HighestScore;
         scoreText.SetText("Score: " + GameController.Instance.Score);
     }
 }

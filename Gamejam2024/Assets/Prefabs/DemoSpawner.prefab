@@ -14,7 +14,7 @@ GameObject:
   m_Layer: 0
   m_Name: DemoSpawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -74,15 +74,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10, y: 5.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1826339008382086388
@@ -97,9 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea9c6ea7de2ffa4c972d6f1f27ff147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enermyPrefabs:
-  - {fileID: 6799928006722859837, guid: 33758499fd65b164c9eca28394a08647, type: 3}
-  - {fileID: 6282853100059260260, guid: 9e2302e2681163c43b2a04bb59339a19, type: 3}
-  enermyParent: {fileID: 0}
   minRad: -20
   maxRad: 20

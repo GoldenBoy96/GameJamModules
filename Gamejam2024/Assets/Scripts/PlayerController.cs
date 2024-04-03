@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
         if (collision.gameObject.CompareTag(GameController.Instance.memeState))
         {
             switch (GameController.Instance.memeState)
@@ -75,17 +75,22 @@ public class PlayerController : MonoBehaviour
                     break;
             }
             GameController.Instance.Score++;
-            if (GameController.Instance.Score > GameManager.Instance.HighestScore)
+            if (GameController.Instance.Score > GameManagerr.Instance.HighestScore)
             {
-                GameManager.Instance.HighestScore = GameController.Instance.Score;
+                GameManagerr.Instance.HighestScore = GameController.Instance.Score;
             }
             EventManager.Instance.InvokeGainScore();
             //Debug.Log("Score: " + GameController.Instance.Score);
         }
         else if (collision.gameObject.CompareTag("GiftCat"))
         {
-            GiftCatMovement giftCatMovement = collision.gameObject.GetComponent<GiftCatMovement>();
-            giftCatMovement.SummonBuff(gameObject);
+            if (canReceiveSkill)
+            {
+                GiftCatMovement giftCatMovement = collision.gameObject.GetComponent<GiftCatMovement>();
+                giftCatMovement.SummonBuff(gameObject);
+                StartCoroutine(CooldownSkill());
+            }
+
         }
         else if (!collision.gameObject.CompareTag("Shield"))
         {
@@ -103,7 +108,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Gameover");
+                    //Debug.Log("Gameover");
                     hearts--;
                     CameraShake.Shake(2f, 2f);
                     EventManager.Instance.InvokeLostHeart();
@@ -123,5 +128,13 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log("Test event from Player");
     }
-    
+
+    bool canReceiveSkill = true;
+    private IEnumerator CooldownSkill()
+    {
+        canReceiveSkill = false;
+        yield return new WaitForSeconds(0.5f);
+        canReceiveSkill = true;
+    }
+
 }
